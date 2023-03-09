@@ -23,7 +23,7 @@ public class PesananLog implements Serializable {
     private Pesanan pesanan;
     @JoinColumn
     @ManyToOne
-    private User user;
+    private Pengguna pengguna;
     private Integer log_type;
     private String log_message;
     @Temporal(TemporalType.TIMESTAMP)

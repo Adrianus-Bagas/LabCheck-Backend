@@ -9,10 +9,10 @@ import lombok.Data;
 
 @Data
 @Entity
-public class User implements Serializable {
+public class Pengguna implements Serializable {
     
     @Id
-    private String id_user;
+    private String user_name;
     private String password;
     private String nama;
     private String alamat;

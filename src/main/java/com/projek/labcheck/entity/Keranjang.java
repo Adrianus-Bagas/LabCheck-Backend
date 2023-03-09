@@ -24,7 +24,7 @@ public class Keranjang implements Serializable {
     private Produk produk;
     @JoinColumn
     @ManyToOne
-    private User user;
+    private Pengguna pengguna;
     private BigDecimal harga;
     private int kuantitas;
     private BigDecimal jumlah;
