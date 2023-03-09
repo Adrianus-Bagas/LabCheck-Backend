@@ -5,9 +5,12 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.projek.labcheck.entity.Produk;
+import com.projek.labcheck.exception.BadRequestException;
 import com.projek.labcheck.exception.ResourceNotFoundException;
+import com.projek.labcheck.repository.KategoriRepository;
 import com.projek.labcheck.repository.ProdukRepository;
 
 @Service
@@ -15,6 +18,9 @@ public class ProdukService {
     
     @Autowired
     private ProdukRepository produkRepository;
+
+    @Autowired
+    private KategoriRepository kategoriRepository;
 
     public List<Produk> findAll(){
         return produkRepository.findAll();
@@ -25,11 +31,46 @@ public class ProdukService {
     }
 
     public Produk create(Produk produk){
+        if(!StringUtils.hasText(produk.getNama_produk())){
+            throw new BadRequestException("Nama Produk tidak boleh kosong");
+        }
+
+        if(produk.getKategori()==null){
+            throw new BadRequestException("Kategori tidak boleh kosong");
+        }
+        
+        if(!StringUtils.hasText(produk.getKategori().getId_kategori())){
+            throw new BadRequestException("Kategori ID tidak boleh kosong");
+        }
+
+        kategoriRepository.findById(produk.getKategori().getId_kategori())
+        .orElseThrow(()->new BadRequestException("Kategori ID "+produk.getKategori().getId_kategori()+" tidak ditemukan"));
+
         produk.setId_produk(UUID.randomUUID().toString());
         return produkRepository.save(produk);
     }
 
     public Produk edit(Produk produk){
+
+        if(!StringUtils.hasText(produk.getId_produk())){
+            throw new BadRequestException("Produk ID tidak boleh kosong");
+        }
+
+        if(!StringUtils.hasText(produk.getNama_produk())){
+            throw new BadRequestException("Nama Produk tidak boleh kosong");
+        }
+
+        if(produk.getKategori()==null){
+            throw new BadRequestException("Kategori tidak boleh kosong");
+        }
+        
+        if(!StringUtils.hasText(produk.getKategori().getId_kategori())){
+            throw new BadRequestException("Kategori ID tidak boleh kosong");
+        }
+
+        kategoriRepository.findById(produk.getKategori().getId_kategori())
+        .orElseThrow(()->new BadRequestException("Kategori ID "+produk.getKategori().getId_kategori()+" tidak ditemukan"));
+
         return produkRepository.save(produk);
     }
 
