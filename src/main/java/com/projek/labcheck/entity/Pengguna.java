@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 @Data
@@ -13,6 +15,7 @@ public class Pengguna implements Serializable {
     
     @Id
     private String user_name;
+    @JsonIgnore
     private String password;
     private String nama;
     private String alamat;
