@@ -18,7 +18,7 @@ import lombok.Data;
 public class Keranjang implements Serializable {
     
     @Id
-    private String id_keranjang;
+    private String id;
     @JoinColumn
     @ManyToOne
     private Produk produk;

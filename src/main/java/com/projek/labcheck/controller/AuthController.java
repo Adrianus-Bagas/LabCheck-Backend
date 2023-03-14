@@ -50,7 +50,7 @@ public class AuthController {
     @PostMapping("/signup")
     public Pengguna signup(@RequestBody SignupRequest request){
         Pengguna pengguna = new Pengguna();
-        pengguna.setUser_name(request.getUsername());
+        pengguna.setId(request.getUsername());
         pengguna.setEmail(request.getEmail());
         pengguna.setPassword(passwordEncoder.encode(request.getPassword()));
         pengguna.setNama(request.getNama());

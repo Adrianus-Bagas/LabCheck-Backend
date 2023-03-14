@@ -22,7 +22,7 @@ import lombok.Data;
 public class Pesanan implements Serializable {
     
     @Id
-    private String id_pesanan;
+    private String id;
     private String nomor_pesanan;
     @Temporal(TemporalType.DATE)
     private Date tanggal;

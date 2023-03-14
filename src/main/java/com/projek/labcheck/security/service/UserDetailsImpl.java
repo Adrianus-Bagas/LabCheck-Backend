@@ -35,7 +35,7 @@ public class UserDetailsImpl implements UserDetails {
     private String role;
 
     public static UserDetailsImpl build(Pengguna pengguna){
-        return new UserDetailsImpl(pengguna.getUser_name(), pengguna.getEmail(), pengguna.getNama(), pengguna.getPassword(), pengguna.getRole());
+        return new UserDetailsImpl(pengguna.getId(), pengguna.getEmail(), pengguna.getNama(), pengguna.getPassword(), pengguna.getRole());
     }
 
     @Override

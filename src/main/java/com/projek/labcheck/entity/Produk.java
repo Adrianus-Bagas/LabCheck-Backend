@@ -15,7 +15,7 @@ import lombok.Data;
 public class Produk implements Serializable {
     
     @Id
-    private String id_produk;
+    private String id;
     @JoinColumn
     @ManyToOne
     private Kategori kategori;

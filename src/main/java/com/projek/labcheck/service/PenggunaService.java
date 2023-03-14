@@ -28,12 +28,12 @@ public class PenggunaService {
     }
 
     public Pengguna create(Pengguna pengguna) {
-        if (!StringUtils.hasText(pengguna.getUser_name())) {
+        if (!StringUtils.hasText(pengguna.getId())) {
             throw new BadRequestException("Username harus diisi");
         }
 
-        if (penggunaRepository.existsById(pengguna.getUser_name())) {
-            throw new BadRequestException("Username " + pengguna.getUser_name() + " sudah terdaftar");
+        if (penggunaRepository.existsById(pengguna.getId())) {
+            throw new BadRequestException("Username " + pengguna.getId() + " sudah terdaftar");
         }
 
         if (!StringUtils.hasText(pengguna.getEmail())) {
@@ -50,7 +50,7 @@ public class PenggunaService {
     }
 
     public Pengguna edit(Pengguna pengguna) {
-        if (!StringUtils.hasText(pengguna.getUser_name())) {
+        if (!StringUtils.hasText(pengguna.getId())) {
             throw new BadRequestException("Username harus diisi");
         }
 

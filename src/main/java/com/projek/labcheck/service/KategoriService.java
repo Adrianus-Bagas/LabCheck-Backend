@@ -26,7 +26,7 @@ public class KategoriService {
     }
 
     public Kategori create(Kategori kategori){
-        kategori.setId_kategori(UUID.randomUUID().toString());
+        kategori.setId(UUID.randomUUID().toString());
         return kategoriRepository.save(kategori);
     }
 

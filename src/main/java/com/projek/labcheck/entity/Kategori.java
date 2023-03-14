@@ -12,6 +12,6 @@ import lombok.Data;
 public class Kategori implements Serializable {
     
     @Id
-    private String id_kategori;
+    private String id;
     private String nama_kategori;
 }

@@ -39,20 +39,20 @@ public class ProdukService {
             throw new BadRequestException("Kategori tidak boleh kosong");
         }
         
-        if(!StringUtils.hasText(produk.getKategori().getId_kategori())){
+        if(!StringUtils.hasText(produk.getKategori().getId())){
             throw new BadRequestException("Kategori ID tidak boleh kosong");
         }
 
-        kategoriRepository.findById(produk.getKategori().getId_kategori())
-        .orElseThrow(()->new BadRequestException("Kategori ID "+produk.getKategori().getId_kategori()+" tidak ditemukan"));
+        kategoriRepository.findById(produk.getKategori().getId())
+        .orElseThrow(()->new BadRequestException("Kategori ID "+produk.getKategori().getId()+" tidak ditemukan"));
 
-        produk.setId_produk(UUID.randomUUID().toString());
+        produk.setId(UUID.randomUUID().toString());
         return produkRepository.save(produk);
     }
 
     public Produk edit(Produk produk){
 
-        if(!StringUtils.hasText(produk.getId_produk())){
+        if(!StringUtils.hasText(produk.getId())){
             throw new BadRequestException("Produk ID tidak boleh kosong");
         }
 
@@ -64,12 +64,12 @@ public class ProdukService {
             throw new BadRequestException("Kategori tidak boleh kosong");
         }
         
-        if(!StringUtils.hasText(produk.getKategori().getId_kategori())){
+        if(!StringUtils.hasText(produk.getKategori().getId())){
             throw new BadRequestException("Kategori ID tidak boleh kosong");
         }
 
-        kategoriRepository.findById(produk.getKategori().getId_kategori())
-        .orElseThrow(()->new BadRequestException("Kategori ID "+produk.getKategori().getId_kategori()+" tidak ditemukan"));
+        kategoriRepository.findById(produk.getKategori().getId())
+        .orElseThrow(()->new BadRequestException("Kategori ID "+produk.getKategori().getId()+" tidak ditemukan"));
 
         return produkRepository.save(produk);
     }
