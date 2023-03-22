@@ -53,7 +53,7 @@ public class PesananService {
         pesanan.setPengguna(new Pengguna(username));
         pesanan.setAlamat_tes(request.getAlamat_tes());
         pesanan.setStatus_pesanan(StatusPesanan.DRAFT);
-        pesanan.setWaktu_dipesan(new Date());
+        pesanan.setWaktuPesan(new Date());
 
         List<PesananItem> items = new ArrayList<>();
         for (KeranjangRequest keranjang : request.getItems()) {
@@ -142,12 +142,12 @@ public class PesananService {
 
     public List<Pesanan> findAllPesananUser(String username, int page, int limit) {
         return pesananRepository.findByPenggunaId(username,
-                PageRequest.of(page, limit, Sort.by("waktu_dipesan").descending()));
+                PageRequest.of(page, limit, Sort.by("waktuPesan").descending()));
     }
 
     public List<Pesanan> search(String filterText, int page, int limit) {
         return pesananRepository.search(filterText.toLowerCase(),
-                PageRequest.of(page, limit, Sort.by("waktu_dipesan").descending()));
+                PageRequest.of(page, limit, Sort.by("waktuPesan").descending()));
     }
 
     @Transactional

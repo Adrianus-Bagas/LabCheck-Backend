@@ -31,7 +31,7 @@ public class PesananResponse implements Serializable {
         this.tanggal = pesanan.getTanggal();
         this.namaPelanggan = pesanan.getPengguna().getNama();
         this.alamat_tes = pesanan.getAlamat_tes();
-        this.waktuDipesan = pesanan.getWaktu_dipesan();
+        this.waktuDipesan = pesanan.getWaktuPesan();
         this.jumlah = pesanan.getJumlah();
         this.ongkir = pesanan.getOngkir();
         this.total = pesanan.getTotal();

@@ -36,5 +36,5 @@ public class Pesanan implements Serializable {
     @Enumerated(EnumType.STRING)
     private StatusPesanan status_pesanan;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date waktu_dipesan;
+    private Date waktuPesan;
 }
