@@ -6,7 +6,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +17,7 @@ import com.projek.labcheck.model.JwtResponse;
 import com.projek.labcheck.model.LoginRequest;
 import com.projek.labcheck.model.SignupRequest;
 import com.projek.labcheck.security.jwt.JwtUtils;
+import com.projek.labcheck.security.service.UserDetailsImpl;
 import com.projek.labcheck.service.PenggunaService;
 
 
@@ -43,8 +43,8 @@ public class AuthController {
                 .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtUtils.generateJwtToken(authentication);
-        UserDetails principal = (UserDetails) authentication.getPrincipal();
-        return ResponseEntity.ok().body(new JwtResponse(token, principal.getUsername(), principal.getUsername()));
+        UserDetailsImpl principal = (UserDetailsImpl) authentication.getPrincipal();
+        return ResponseEntity.ok().body(new JwtResponse(token, principal.getUsername(), principal.getEmail(), principal.getRole()));
     }
 
     @PostMapping("/signup")

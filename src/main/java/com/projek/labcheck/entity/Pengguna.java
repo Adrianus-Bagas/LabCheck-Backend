@@ -27,7 +27,6 @@ public class Pengguna implements Serializable {
     private String email;
     @JsonIgnore
     private String hp;
-    @JsonIgnore
     private String role;
     @JsonIgnore
     private Boolean is_aktif;
